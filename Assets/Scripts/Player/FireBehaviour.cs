@@ -6,6 +6,7 @@ public class FireBehaviour : MonoBehaviour
 
 
     private InputAction moveAction;
+    private Rigidbody2D rb;
     private Transform tr;
     [SerializeField] private Transform spawn;
     [SerializeField] private ProjectileBehaviour fireball_prefab;
@@ -13,6 +14,7 @@ public class FireBehaviour : MonoBehaviour
     private void Awake()
     {
         tr = transform;
+        rb = GetComponent<Rigidbody2D>();
 
     }
     void Start()
@@ -28,9 +30,9 @@ public class FireBehaviour : MonoBehaviour
         }
     }
 
+    
     private void Fire()
     {
         Instantiate(fireball_prefab, spawn.position, tr.rotation);
-        Debug.Log("Fire");
     }
 }
