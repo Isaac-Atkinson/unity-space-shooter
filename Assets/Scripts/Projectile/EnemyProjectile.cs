@@ -1,7 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ProjectileBehaviour : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float speed = 10f;
@@ -11,25 +10,23 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    
+
     void Start()
     {
         rb.linearVelocity = transform.up * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-
     {
-
         PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
-        if (!playerMovement)
+        if (playerMovement)
         {
+            Debug.Log("Hit player");
             Healthbehaviour healthbehaviour = collision.GetComponent<Healthbehaviour>();
             if (healthbehaviour) healthbehaviour.addHealth(-damage);
             hitSomething();
         }
-
-
+        
     }
 
     private void hitSomething()
@@ -37,9 +34,10 @@ public class ProjectileBehaviour : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public float Speed => speed;
 
     void Update()
     {
-        
+
     }
 }

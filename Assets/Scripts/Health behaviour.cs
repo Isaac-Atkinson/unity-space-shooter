@@ -6,6 +6,12 @@ public class Healthbehaviour : MonoBehaviour
     [SerializeField] private int maxHealth;
     private int currentHealth;
 
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+
+    }
     public void addHealth(int health)
     {
         currentHealth += health;
