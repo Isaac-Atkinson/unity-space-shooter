@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float drag;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float maxRotationSpeed;
 
     private InputAction thrustAction;
     private InputAction brakeAction;
@@ -37,13 +38,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if(leftRotate != null)  {
             float left = leftRotate.ReadValue<float>();
+            //tr.Rotate(left * rotationSpeed * Vector3.forward);
             rb.AddTorque(left * rotationSpeed);
         }
         if (rightRotate != null)
         {
             float right = rightRotate.ReadValue<float>();
+            //tr.Rotate(right * rotationSpeed * Vector3.forward * -1);
             rb.AddTorque(right * rotationSpeed * -1);
         }
+        //rb.angularVelocity = Mathf.Clamp(rb.angularVelocity, -maxRotationSpeed, maxRotationSpeed);
 
 
         if (thrustAction != null){
