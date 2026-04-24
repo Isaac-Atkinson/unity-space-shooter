@@ -5,30 +5,71 @@ public class PlayerMovement : MonoBehaviour
     
 {
 
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float drag;
+    [SerializeField] private float rotationSpeed;
 
-    private InputAction moveAction;
+    private InputAction thrustAction;
+    private InputAction brakeAction;
+    private InputAction leftRotate;
+    private InputAction rightRotate;
     private Transform tr;
-    private Vector2 axisValue;
-    private Vector2 moveDistance;
-
+    private Rigidbody2D rb;
     void Awake()
     {
         tr = transform;
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearDamping = drag;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        moveAction = InputSystem.actions.FindAction("Move");
+        thrustAction = InputSystem.actions.FindAction("Thrust");
+        brakeAction = InputSystem.actions.FindAction("Brake");
+        leftRotate = InputSystem.actions.FindAction("RotateLeft");
+        rightRotate = InputSystem.actions.FindAction("RotateRight");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveAction != null){
-            axisValue = moveAction.ReadValue<Vector2>();
-            moveDistance = axisValue * speed * Time.deltaTime;
-            tr.Translate(moveDistance);
+        if(leftRotate != null)  {
+            float left = leftRotate.ReadValue<float>();
+            rb.AddTorque(left * rotationSpeed);
+        }
+        if (rightRotate != null)
+        {
+            float right = rightRotate.ReadValue<float>();
+            rb.AddTorque(right * rotationSpeed * -1);
+        }
+
+
+        if (thrustAction != null){
+
+            float thrust = thrustAction.ReadValue<float>();
+            
+
+            rb.AddForce(tr.up * thrust * speed);
+            if(rb.linearVelocity.magnitude > maxSpeed)
+            {
+                rb.linearVelocity = maxSpeed * rb.linearVelocity.normalized;
+            }
+        } 
+        
+
+        if (brakeAction != null)
+        {
+
+            float brake = brakeAction.ReadValue<float>();
+            rb.AddForce(tr.up * brake * speed * -1);
+            if (rb.linearVelocity.magnitude > maxSpeed)
+            {
+                rb.linearVelocity = maxSpeed * rb.linearVelocity.normalized;
+            }
         }
     }
+
+
 }
