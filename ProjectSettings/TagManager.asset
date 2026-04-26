@@ -13,9 +13,9 @@ TagManager:
   - UI
   - Projectiles
   - alive
-  - 
-  - 
-  - 
+  - power-ups
+  - player
+  - wall
   - 
   - 
   - 
@@ -46,6 +46,12 @@ TagManager:
     locked: 0
   - name: projectile
     uniqueID: 1513393533
+    locked: 0
+  - name: Player
+    uniqueID: 3433304629
+    locked: 0
+  - name: power-ups
+    uniqueID: 3172195965
     locked: 0
   m_RenderingLayers:
   - Default

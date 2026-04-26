@@ -21,7 +21,7 @@ public class EnemyProjectile : MonoBehaviour
         PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
         if (playerMovement)
         {
-            Debug.Log("Hit player");
+            
             Healthbehaviour healthbehaviour = collision.GetComponent<Healthbehaviour>();
             if (healthbehaviour) healthbehaviour.addHealth(-damage);
             hitSomething();

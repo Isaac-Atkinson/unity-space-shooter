@@ -26,6 +26,7 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             Healthbehaviour healthbehaviour = collision.GetComponent<Healthbehaviour>();
             if (healthbehaviour) healthbehaviour.addHealth(-damage);
+            Debug.Log("Did damage: " + damage);
             hitSomething();
         }
 
@@ -41,5 +42,10 @@ public class ProjectileBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setDamage(int newDamage)
+    {
+        damage = newDamage;
     }
 }

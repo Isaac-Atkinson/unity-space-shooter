@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction rightRotate;
     private Transform tr;
     private Rigidbody2D rb;
+
     void Awake()
     {
         tr = transform;
@@ -77,5 +79,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public IEnumerator ApplySpeedBoost(float duration, float multiplier)
+    {
+        speed *= multiplier;
+        maxSpeed *= multiplier;
+        rotationSpeed *= multiplier;
+        maxRotationSpeed *= multiplier;
+        brakeForce *= multiplier;
+        
+        yield return new WaitForSeconds(duration);
 
+        speed /= multiplier;
+        maxSpeed /= multiplier;
+        rotationSpeed /= multiplier;
+        maxRotationSpeed /= multiplier;
+        brakeForce /= multiplier;
+    }
+
+    
 }
