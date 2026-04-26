@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float drag;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float maxRotationSpeed;
+    [SerializeField] private float brakeForce;
 
     private InputAction thrustAction;
     private InputAction brakeAction;
@@ -67,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
         {
 
             float brake = brakeAction.ReadValue<float>();
-            rb.AddForce(tr.up * brake * speed * -1);
+            //rb.AddForce(tr.up * brake * speed * -1);
+            rb.AddForce(-rb.linearVelocity * brake * brakeForce);
             if (rb.linearVelocity.magnitude > maxSpeed)
             {
                 rb.linearVelocity = maxSpeed * rb.linearVelocity.normalized;

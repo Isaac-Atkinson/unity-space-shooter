@@ -10,6 +10,7 @@ public class FireBehaviour : MonoBehaviour
     private Transform tr;
     [SerializeField] private Transform spawn;
     [SerializeField] private ProjectileBehaviour fireball_prefab;
+    [SerializeField] private GamePauseManager gamePauseManager;
 
     private void Awake()
     {
@@ -25,8 +26,13 @@ public class FireBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveAction != null && moveAction.triggered) {
-            Fire();
+        if (moveAction != null && moveAction.triggered)
+        {
+            if (gamePauseManager != null && !gamePauseManager.IsPaused())
+            {
+                Debug.Log("Firing");
+                Fire();
+            }
         }
     }
 
@@ -35,4 +41,6 @@ public class FireBehaviour : MonoBehaviour
     {
         Instantiate(fireball_prefab, spawn.position, tr.rotation);
     }
+
+    
 }
