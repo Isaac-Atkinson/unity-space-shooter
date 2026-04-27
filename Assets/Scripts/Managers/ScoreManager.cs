@@ -29,8 +29,9 @@ public class ScoreManager : MonoBehaviour
     {
         onScoreChange?.Invoke(currentScore.ToString());
     }
-    public void addScore(int score)
+    public void addScore(GameObject enemy)
     {
+        int score = enemy.GetComponent<Healthbehaviour>().MaxHealth;
         currentScore += (int) (score * scoreMultiplier);
         onScoreChange?.Invoke(currentScore.ToString());
     }

@@ -6,9 +6,11 @@ public class Healthbehaviour : MonoBehaviour
 {
 
     public UnityEvent<string> onHealthChange;
-    public UnityEvent<int> onDeath;
+    public UnityEvent<GameObject> onDeath;
 
     [SerializeField] private int maxHealth;
+    [SerializeField] private GameObject explosionPrefab;
+
     private int currentHealth;
 
 
@@ -30,8 +32,9 @@ public class Healthbehaviour : MonoBehaviour
     private void Die()
     {
         
-        onDeath?.Invoke(maxHealth);
+        onDeath?.Invoke(gameObject);
         gameObject.SetActive(false);
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
     }
 
     public IEnumerator ApplyHealthBoost(float duration, float multiplier)
@@ -49,5 +52,5 @@ public class Healthbehaviour : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth, maxHealth);
     }
 
-
+    public int MaxHealth => maxHealth;
 }

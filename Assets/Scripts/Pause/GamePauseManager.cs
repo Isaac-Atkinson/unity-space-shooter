@@ -62,6 +62,12 @@ public class GamePauseManager : MonoBehaviour
         return isPaused;
     }
 
+    public void onGameOver()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
     public void onExit()
     {
         isPaused = false;
