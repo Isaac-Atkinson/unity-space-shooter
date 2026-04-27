@@ -5,8 +5,8 @@ public class SpawningState : SpawnerState
 {
     private SpawnController SpawnController;
 
-    private int enemiesSpawned = 0;
-    private int timeBetweenSpawns = 2;
+    private int swarmsSpawned = 0;
+    private int timeBetweenSwarms = 5;
     private float spawnTimer;
 
     public SpawningState(SpawnController spawnController)
@@ -17,21 +17,25 @@ public class SpawningState : SpawnerState
     public SpawnerState Tick(SpawnController spawnController)
     {
         spawnTimer += Time.deltaTime;
-        if(spawnTimer >= timeBetweenSpawns && enemiesSpawned < spawnController.EnemiesPerRound)
+        if(spawnTimer >= timeBetweenSwarms)
         {
-            spawnController.SpawnEnemy();
+            spawnController.spawnSurge();
             spawnTimer = 0;
-            enemiesSpawned++;
+            swarmsSpawned++;
         }
 
-        if(spawnController.AllEnemiesKilled()) return new IdleState();
+        if (swarmsSpawned >= spawnController.SwarmsPerRound)
+        {
+            spawnController.incrementWaveNumber();
+            return new IdleState();
+        }
         return null;
     }
 
     public void Enter()
     {
-        SpawnController.SpawnEnemy();
-        enemiesSpawned++;
+        SpawnController.spawnSurge();
+        swarmsSpawned++;
         spawnTimer = 0;
     }
 

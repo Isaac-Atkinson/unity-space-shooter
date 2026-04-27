@@ -6,26 +6,48 @@ public class EnemyFireBehaviour : MonoBehaviour {
     [SerializeField] private Transform spawn;
     [SerializeField] private EnemyProjectile enemy_projectile;
     [SerializeField] private float fireTime = 1.0f;
+    [SerializeField] private FireType fireType;
+
+    private enum FireType{
+        None,
+        Targeted,
+        Straight
+    }
 
     private float projectileSpeed;
     private PlayerMovement player;
     private Rigidbody2D targetRB;
 
-    private void Fire()
-    {
-        Instantiate(enemy_projectile, spawn.position, spawn.rotation);
-    }
+    
 
     void Start()
     {
         tr = transform;
-        InvokeRepeating("fire", 0f, fireTime);
-        instantiate();
+        initialise();
+        switch(fireType)
+        {
+            case FireType.None:
+                break;
+            case FireType.Targeted:
+                InvokeRepeating("fire", 0f, fireTime);
+                break;
+            case FireType.Straight:
+                InvokeRepeating("fire", 0f, fireTime);
+                break;
+        }
+
     }
 
     private void FixedUpdate()
     {
-        updateRotation();
+        switch(fireType)
+        {
+            case FireType.Targeted:
+                updateRotation();
+                break;
+            case FireType.Straight:
+                break;
+        }
     }
 
     private void fire()
@@ -33,7 +55,7 @@ public class EnemyFireBehaviour : MonoBehaviour {
         Instantiate(enemy_projectile, spawn.position, tr.rotation);
     }
 
-    private void instantiate()
+    private void initialise()
     {
         projectileSpeed = enemy_projectile.Speed;
         player = FindFirstObjectByType<PlayerMovement> ();
@@ -58,13 +80,5 @@ public class EnemyFireBehaviour : MonoBehaviour {
 
     }
 
-    private void OnEnable()
-    {
-        InvokeRepeating("fire", 0f, fireTime);
-    }
-
-    private void OnDisable()
-    {
-        CancelInvoke("fire");
-    }
+    
 }

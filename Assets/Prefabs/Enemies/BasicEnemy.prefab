@@ -45,8 +45,9 @@ GameObject:
   - component: {fileID: 5666648826538030832}
   - component: {fileID: 258153189000713858}
   - component: {fileID: 8768433450712943479}
+  - component: {fileID: 5685933122382630999}
   m_Layer: 7
-  m_Name: enemy (9)
+  m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: -0.948, y: 4.147, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.735, z: 1}
+  m_LocalScale: {x: 2, y: 2.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 17220065850515596}
@@ -213,6 +214,7 @@ MonoBehaviour:
   spawn: {fileID: 17220065850515596}
   enemy_projectile: {fileID: 7919974536667465780, guid: 418c1d2ddfc21a94db1e9f676fdee6ee, type: 3}
   fireTime: 1
+  fireType: 0
 --- !u!58 &8768433450712943479
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -249,3 +251,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.14132681
+--- !u!114 &5685933122382630999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353512062059346163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8fce88c245a8c48aea48f5103c4858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementBehaviour
+  speed: 0.4

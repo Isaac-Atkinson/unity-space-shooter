@@ -35,6 +35,7 @@ public class Healthbehaviour : MonoBehaviour
         onDeath?.Invoke(gameObject);
         gameObject.SetActive(false);
         Instantiate(explosionPrefab, transform.position, transform.rotation);
+        
     }
 
     public IEnumerator ApplyHealthBoost(float duration, float multiplier)

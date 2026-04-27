@@ -5,9 +5,12 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     private SpawnerState currentState = new IdleState();
-    [SerializeField] private int enemiesPerRound;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private int swarmsPerRound;
+    [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private Transform[] spawnPoints;
+
+    private float spawnProbability = 0.3f;
+    private int currentWave = 0;
 
     private List<GameObject> currentEnemies = new List<GameObject>();
 
@@ -28,16 +31,36 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy()
+   
+
+    public void spawnSurge()
     {
-        Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject enemy = Instantiate(enemyPrefab, point.position, point.rotation);
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            float chanceToSpawn = Random.Range(0f, 1f);
+            if(chanceToSpawn < (1 - spawnProbability)) continue;
 
-        enemy.GetComponent<Healthbehaviour>().onDeath.AddListener((removeEnemy));
-        enemy.GetComponent<Healthbehaviour>().onDeath.AddListener(ScoreManager.instance.addScore);
+            Transform point = spawnPoints[i];
+            int maxEnemyIndex;
+            switch(currentWave)
+            {
+                case 0:
+                    maxEnemyIndex = 0;
+                    break;
+                case 1:
+                    maxEnemyIndex = 1;
+                    break;
+                default:
+                    maxEnemyIndex = enemyPrefabs.Count - 1;
+                    break;
+            }
 
+            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, maxEnemyIndex)], point.position, point.rotation);
 
-        currentEnemies.Add(enemy);
+            enemy.GetComponent<Healthbehaviour>().onDeath.AddListener((removeEnemy));
+            enemy.GetComponent<Healthbehaviour>().onDeath.AddListener(ScoreManager.instance.addScore);
+            currentEnemies.Add(enemy);
+        }
     }
 
     public void removeEnemy(GameObject enemy)
@@ -45,15 +68,17 @@ public class SpawnController : MonoBehaviour
         currentEnemies.Remove(enemy);
     }
 
-    public int EnemiesPerRound => enemiesPerRound;
+    public int SwarmsPerRound => swarmsPerRound;
 
-    public bool AllEnemiesKilled()
+    
+
+    public void setSwarmsPerRound(int newSwarmsPerRound)
     {
-        return currentEnemies.Count == 0;
+        swarmsPerRound = newSwarmsPerRound;
     }
 
-    public void setEnemiesPerRound(int newEnemiesPerRound)
+    public void incrementWaveNumber()
     {
-        enemiesPerRound = newEnemiesPerRound;
+        currentWave++;
     }
 }

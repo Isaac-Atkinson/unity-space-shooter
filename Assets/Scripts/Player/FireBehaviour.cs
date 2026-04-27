@@ -40,8 +40,8 @@ public class FireBehaviour : MonoBehaviour
     
     private void Fire()
     {
-        Instantiate(fireball_prefab, spawn.position, tr.rotation);
-        fireball_prefab.setDamage(damage);
+        ProjectileBehaviour projectile = Instantiate(fireball_prefab, spawn.position, tr.rotation);
+        projectile.setDamage(damage);
     }
 
     public IEnumerator ApplyDamageBoost(float duration, float multiplier)

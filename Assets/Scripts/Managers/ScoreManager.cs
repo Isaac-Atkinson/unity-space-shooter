@@ -36,6 +36,14 @@ public class ScoreManager : MonoBehaviour
         onScoreChange?.Invoke(currentScore.ToString());
     }
 
+    public void subtractScore(GameObject enemy)
+    {
+        int score = enemy.GetComponent<Healthbehaviour>().MaxHealth;
+        currentScore -= (int)(score * scoreMultiplier);
+        currentScore = Mathf.Max(currentScore, 0);
+        onScoreChange?.Invoke(currentScore.ToString());
+    }
+
     public void onGameOver()
     {
 
@@ -57,4 +65,6 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         scoreMultiplier = 1.0f;
     }
+
+
 }

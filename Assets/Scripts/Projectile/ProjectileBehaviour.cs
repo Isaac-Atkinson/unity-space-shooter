@@ -5,7 +5,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private int damage = 10;
+    private int damage = 0;
 
     void Awake()
     {
@@ -46,6 +46,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void setDamage(int newDamage)
     {
+        Debug.Log("Setting damage: " + newDamage);
         damage = newDamage;
     }
 }
