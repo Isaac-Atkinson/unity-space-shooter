@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class SpawnController : MonoBehaviour
 {
     public UnityEvent<string> onWaveChange;
 
     [SerializeField] private int swarmsPerRound;
+    [SerializeField] private float spawnProbability = 0.3f;
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private float spawnProbability = 0.3f;
+    [SerializeField] private Slider waveProgressBar;
 
     private SpawnerState currentState = new IdleState();
     private int currentWave = 1;
+    
 
     private List<GameObject> currentEnemies = new List<GameObject>();
 
@@ -22,6 +25,8 @@ public class SpawnController : MonoBehaviour
     private void Start()
     {
         onWaveChange?.Invoke(currentWave.ToString());
+        disableProgressBar();
+
     }
     void Update()
     {
@@ -33,9 +38,9 @@ public class SpawnController : MonoBehaviour
         SpawnerState newState = currentState.Tick(this);
         if (newState != null)
         {
-            currentState.Exit();
+            currentState.Exit(this);
             currentState = newState;
-            currentState.Enter();
+            currentState.Enter(this);
         }
     }
 
@@ -45,9 +50,7 @@ public class SpawnController : MonoBehaviour
     {
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            float chanceToSpawn = Random.Range(0f, 1f);
-            if(chanceToSpawn < (1 - spawnProbability)) continue;
-
+         
             Transform point = spawnPoints[i];
             int maxEnemyIndex = Mathf.Min(currentWave - 1, enemyPrefabs.Count - 1);
             
@@ -64,6 +67,9 @@ public class SpawnController : MonoBehaviour
     {
         Debug.Log("Removing enemy" );
         currentEnemies.Remove(enemy);
+        float progress = ((float) currentEnemies.Count / (spawnPoints.Length * swarmsPerRound));
+        Debug.Log("Progress: " + progress);
+        waveProgressBar.value = progress;
     }
 
     public int SwarmsPerRound => swarmsPerRound;
@@ -79,6 +85,19 @@ public class SpawnController : MonoBehaviour
     {
         currentWave++;
         onWaveChange?.Invoke(currentWave.ToString());
-        swarmsPerRound++;
+        
+    }
+
+    public void enableProgressBar()
+    {
+        waveProgressBar.value = 1f;
+        waveProgressBar.enabled = true;
+        waveProgressBar.gameObject.SetActive(true);
+    }
+
+    public void disableProgressBar()
+    {
+        waveProgressBar.enabled = false;
+        waveProgressBar.gameObject.SetActive(false);
     }
 }
