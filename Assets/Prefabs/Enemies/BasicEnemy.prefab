@@ -46,6 +46,9 @@ GameObject:
   - component: {fileID: 258153189000713858}
   - component: {fileID: 8768433450712943479}
   - component: {fileID: 5685933122382630999}
+  - component: {fileID: 1870067635054586943}
+  - component: {fileID: -8064475848854950341}
+  - component: {fileID: -7014695943007703260}
   m_Layer: 7
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -170,6 +173,9 @@ MonoBehaviour:
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -264,3 +270,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementBehaviour
   speed: 0.4
+--- !u!114 &1870067635054586943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353512062059346163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970e43c21b9c4f1498b4d3d4d25daa83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundaryBehaviour
+--- !u!114 &-8064475848854950341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353512062059346163}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4d8e99a5097f7419e4fb918bf7d2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnDeathDrop
+  dropPrefabs:
+  - {fileID: 6664471971148464462, guid: 7f4fb48338b5cb84fbb15e7c20f44e51, type: 3}
+  - {fileID: 6568172477710758926, guid: 2b22f7c16edd74e4baf8355ab94c3c32, type: 3}
+  - {fileID: 6419025448129008809, guid: 8f06841c552db174c98aae580de31804, type: 3}
+  dropProbability: 1
+--- !u!114 &-7014695943007703260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353512062059346163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0badecd6e9187874e97f11122d220843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationController
+  damageColor: {r: 0.9790758, g: 1, b: 0, a: 1}

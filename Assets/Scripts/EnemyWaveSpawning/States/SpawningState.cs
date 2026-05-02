@@ -1,9 +1,14 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpawningState : SpawnerState
 {
+
+    
+
     private SpawnController SpawnController;
+
 
     private int swarmsSpawned = 0;
     private int timeBetweenSwarms = 5;
@@ -17,16 +22,17 @@ public class SpawningState : SpawnerState
     public SpawnerState Tick(SpawnController spawnController)
     {
         spawnTimer += Time.deltaTime;
-        if(spawnTimer >= timeBetweenSwarms)
+        if(spawnTimer >= timeBetweenSwarms && swarmsSpawned < spawnController.SwarmsPerRound)
         {
             spawnController.spawnSurge();
             spawnTimer = 0;
             swarmsSpawned++;
         }
 
-        if (swarmsSpawned >= spawnController.SwarmsPerRound)
+        if (spawnController.AllEnemiesGone() && swarmsSpawned >= spawnController.SwarmsPerRound)
         {
             spawnController.incrementWaveNumber();
+
             return new IdleState();
         }
         return null;

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6649449b4351d60488c05e6cf9c43f08, type: 3}
   m_Name: ScoreBoost
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpType
-  sprite: {fileID: 21300000, guid: c4b06c20a938a6e46949e8faac79b20e, type: 3}
+  sprite: {fileID: 253287599967838003, guid: 73ace0c86d986d84bb1b052126460106, type: 3}
   duration: 10
   multiplier: 1.5
-  color: {r: 0.5529412, g: 0.8705883, b: 0.49411768, a: 1}
+  color: {r: 0.7686275, g: 0.39607847, b: 0.8000001, a: 1}
   effect: 2

@@ -6,7 +6,6 @@ public class PowerUpController : MonoBehaviour
 {
 
     public UnityEvent<PowerUpType> onPowerUpActivated;
-    public UnityEvent<int> onPowerUpActivatedDuration;
 
     private SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
@@ -23,7 +22,6 @@ public class PowerUpController : MonoBehaviour
     public void activatePowerUp(PowerUpType type)
     {
         onPowerUpActivated?.Invoke(type);
-        onPowerUpActivatedDuration?.Invoke(type.duration);
 
         Color subtleColor = Color.Lerp(Color.white, type.color, 0.5f);
         StartCoroutine(applyColourTint(subtleColor, type.duration));

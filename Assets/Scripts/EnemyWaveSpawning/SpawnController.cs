@@ -1,20 +1,28 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class SpawnController : MonoBehaviour
 {
-    private SpawnerState currentState = new IdleState();
+    public UnityEvent<string> onWaveChange;
+
     [SerializeField] private int swarmsPerRound;
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private float spawnProbability = 0.3f;
 
-    private float spawnProbability = 0.3f;
-    private int currentWave = 0;
+    private SpawnerState currentState = new IdleState();
+    private int currentWave = 1;
 
     private List<GameObject> currentEnemies = new List<GameObject>();
 
 
+    private void Start()
+    {
+        onWaveChange?.Invoke(currentWave.ToString());
+    }
     void Update()
     {
         updateState();
@@ -41,21 +49,10 @@ public class SpawnController : MonoBehaviour
             if(chanceToSpawn < (1 - spawnProbability)) continue;
 
             Transform point = spawnPoints[i];
-            int maxEnemyIndex;
-            switch(currentWave)
-            {
-                case 0:
-                    maxEnemyIndex = 0;
-                    break;
-                case 1:
-                    maxEnemyIndex = 1;
-                    break;
-                default:
-                    maxEnemyIndex = enemyPrefabs.Count - 1;
-                    break;
-            }
+            int maxEnemyIndex = Mathf.Min(currentWave - 1, enemyPrefabs.Count - 1);
+            
 
-            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, maxEnemyIndex)], point.position, point.rotation);
+            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, maxEnemyIndex + 1)], point.position, point.rotation);
 
             enemy.GetComponent<Healthbehaviour>().onDeath.AddListener((removeEnemy));
             enemy.GetComponent<Healthbehaviour>().onDeath.AddListener(ScoreManager.instance.addScore);
@@ -65,20 +62,23 @@ public class SpawnController : MonoBehaviour
 
     public void removeEnemy(GameObject enemy)
     {
+        Debug.Log("Removing enemy" );
         currentEnemies.Remove(enemy);
     }
 
     public int SwarmsPerRound => swarmsPerRound;
 
-    
-
-    public void setSwarmsPerRound(int newSwarmsPerRound)
+    public bool AllEnemiesGone()
     {
-        swarmsPerRound = newSwarmsPerRound;
+        return currentEnemies.Count == 0;
     }
+
+    
 
     public void incrementWaveNumber()
     {
         currentWave++;
+        onWaveChange?.Invoke(currentWave.ToString());
+        swarmsPerRound++;
     }
 }

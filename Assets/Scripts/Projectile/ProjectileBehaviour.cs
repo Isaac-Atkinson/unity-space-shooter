@@ -46,7 +46,6 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void setDamage(int newDamage)
     {
-        Debug.Log("Setting damage: " + newDamage);
         damage = newDamage;
     }
 }
