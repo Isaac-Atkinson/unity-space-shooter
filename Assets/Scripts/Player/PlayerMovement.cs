@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.linearDamping = drag;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         thrustAction = InputSystem.actions.FindAction("Thrust");

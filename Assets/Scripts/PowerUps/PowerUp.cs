@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] private PowerUpType type;
-    private int duration;
+    [SerializeField] private GameObject pickupEffectPrefab;
+    
+    
+    
 
     private void Start()
     {
         GetComponent<SpriteRenderer>().sprite = type.sprite;
-        duration = type.duration;
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -17,6 +21,7 @@ public class PowerUp : MonoBehaviour
         if (powerUpController != null)
         {
             powerUpController.activatePowerUp(type);
+            Instantiate(pickupEffectPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

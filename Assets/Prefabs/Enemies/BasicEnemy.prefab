@@ -300,7 +300,7 @@ MonoBehaviour:
   - {fileID: 6568172477710758926, guid: 2b22f7c16edd74e4baf8355ab94c3c32, type: 3}
   - {fileID: 6419025448129008809, guid: 8f06841c552db174c98aae580de31804, type: 3}
   - {fileID: 2630348138479870437, guid: b529aab72b644d149b06f8e61602591e, type: 3}
-  dropProbability: 0.5
+  dropProbability: 1
 --- !u!114 &-7014695943007703260
 MonoBehaviour:
   m_ObjectHideFlags: 0

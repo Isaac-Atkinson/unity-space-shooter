@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
   enemyPrefab: {fileID: 3583150559923293287, guid: 4e995b204c318a341a0d621fb555550d, type: 3}
   spawnProbability: 0.1
-  unlockWave: 4
+  unlockWave: 3

@@ -48,6 +48,15 @@ TagManager:
   - name: Player
     uniqueID: 3433304629
     locked: 0
+  - name: detection wall
+    uniqueID: 3323015375
+    locked: 0
+  - name: Enemy
+    uniqueID: 2723896241
+    locked: 0
+  - name: Fast enemy
+    uniqueID: 2095207727
+    locked: 0
   - name: power-ups
     uniqueID: 3172195965
     locked: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6649449b4351d60488c05e6cf9c43f08, type: 3}
-  m_Name: ScoreBoost
+  m_Name: ScoreMultiplier
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpType
   sprite: {fileID: 253287599967838003, guid: 73ace0c86d986d84bb1b052126460106, type: 3}
   duration: 10

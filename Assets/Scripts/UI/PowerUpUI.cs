@@ -10,6 +10,9 @@ public class PowerUpUI : MonoBehaviour
 {
     [SerializeField] private GameObject effectPanel;
     [SerializeField] private Transform canvas;
+    [SerializeField] private GameObject powerUpCollectedPanel;
+    
+    private float powerUpCollectedDisplayTime = 1f;
 
 
 
@@ -37,5 +40,22 @@ public class PowerUpUI : MonoBehaviour
         powerUpIcon.sprite = type.sprite;
         TextMeshProUGUI timer = panel.GetComponentInChildren<TextMeshProUGUI>();
         StartCoroutine(Timer(type.duration, timer));
+    }
+
+    public void showPowerUpCollectedUI(PowerUpType type)
+    {
+        StartCoroutine(animatePowerUpCollectedUI(type));
+
+    }
+
+    private IEnumerator animatePowerUpCollectedUI(PowerUpType type)
+    {
+        GameObject panel = Instantiate(powerUpCollectedPanel, canvas);
+        TextMeshProUGUI text = panel.GetComponentInChildren<TextMeshProUGUI>();
+        text.text = "+ " + type.effect.ToString();
+
+        yield return new WaitForSeconds(powerUpCollectedDisplayTime);
+
+        Destroy(panel);
     }
 }
