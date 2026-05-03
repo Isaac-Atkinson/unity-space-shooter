@@ -5,12 +5,12 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
+
 public class SpawnController : MonoBehaviour
 {
     public UnityEvent<string> onWaveChange;
 
     [SerializeField] private int swarmsPerRound;
-    [SerializeField] private float spawnProbability = 0.3f;
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private Slider waveProgressBar;
@@ -26,6 +26,8 @@ public class SpawnController : MonoBehaviour
     {
         onWaveChange?.Invoke(currentWave.ToString());
         disableProgressBar();
+        Color color = new Color(142 /255f, 46 / 255f, 96 / 255f);
+        waveProgressBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = color;
 
     }
     void Update()
@@ -85,6 +87,7 @@ public class SpawnController : MonoBehaviour
     {
         currentWave++;
         onWaveChange?.Invoke(currentWave.ToString());
+        swarmsPerRound++;
         
     }
 

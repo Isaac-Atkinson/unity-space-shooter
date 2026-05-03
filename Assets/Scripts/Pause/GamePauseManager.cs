@@ -12,6 +12,7 @@ public class GamePauseManager : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenuPanel;
 
+    public UnityEvent<bool> onPauseToggle;
     public static GamePauseManager instance { get; private set; }
     private InputAction pauseAction;
 
@@ -34,7 +35,7 @@ public class GamePauseManager : MonoBehaviour
 
     public void togglePause()
     {
-        Debug.Log("Toggling pause");
+        
 
         if (isPaused)
         {
@@ -48,6 +49,7 @@ public class GamePauseManager : MonoBehaviour
             isPaused = true;
             pauseMenuPanel.SetActive(true);
         }
+        onPauseToggle.Invoke(isPaused);
     }
 
     private void Update()

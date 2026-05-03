@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,14 @@ public class MainMenuBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject highScoresPanel;
+    [SerializeField] private GameObject optionsPanel;
+
+    private void Start()
+    {
+        mainPanel.SetActive(true);
+        highScoresPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+    }
     public void startGame()
     {
         SceneManager.LoadScene("MainScene");
@@ -20,5 +29,17 @@ public class MainMenuBehaviour : MonoBehaviour
     {
         mainPanel.SetActive(true);
         highScoresPanel.SetActive(false);
+    }
+
+    public void loadOptions()
+    {
+        mainPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+    }
+
+    public void hideOptions()
+    {
+        mainPanel.SetActive(true);
+        optionsPanel.SetActive(false);
     }
 }
