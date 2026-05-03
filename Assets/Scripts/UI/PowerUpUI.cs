@@ -28,7 +28,7 @@ public class PowerUpUI : MonoBehaviour
             timer.text = Mathf.Ceil(timeLeft).ToString();
             yield return null;
         }
-        Destroy(effectPanel);
+        effectPanel.SetActive(false);
     }
     public void showUI(PowerUpType type)
     {

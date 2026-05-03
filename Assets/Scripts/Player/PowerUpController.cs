@@ -30,14 +30,14 @@ public class PowerUpController : MonoBehaviour
             case PowerUpType.PowerUpEffect.damageBoost:
                 StartCoroutine(fireBehaviour.ApplyDamageBoost(type.duration, type.multiplier));
                 break;
-            case PowerUpType.PowerUpEffect.speedBoost:
-                StartCoroutine(playerMovement.ApplySpeedBoost(type.duration, type.multiplier));
-                break;
-            case PowerUpType.PowerUpEffect.healthBoost:
-                StartCoroutine(healthBehaviour.ApplyHealthBoost(type.duration, type.multiplier));
+            case PowerUpType.PowerUpEffect.shieldBoost:
+                StartCoroutine(healthBehaviour.ApplyShieldBoost(type.duration, type.multiplier));
                 break;
             case PowerUpType.PowerUpEffect.scoreBoost:
                 StartCoroutine(ScoreManager.instance.ApplyScoreBoost(type.duration, type.multiplier));
+                break;
+            case PowerUpType.PowerUpEffect.speedBoost:
+                StartCoroutine(playerMovement.ApplySpeedBoost(type.duration, type.multiplier));
                 break;
         }
     }

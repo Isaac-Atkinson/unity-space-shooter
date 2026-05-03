@@ -13,6 +13,7 @@ public class Healthbehaviour : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
 
     private int currentHealth;
+    private float shieldMultiplier = 1f;
 
 
     private void Awake()
@@ -27,11 +28,13 @@ public class Healthbehaviour : MonoBehaviour
         {
             onDamaged?.Invoke(-health);
         }
-        currentHealth += health;
+        currentHealth += (int)(health * shieldMultiplier);
+
         if (currentHealth > maxHealth) currentHealth = maxHealth;
         if (currentHealth < 0) currentHealth = 0;
-        onHealthChange?.Invoke(currentHealth.ToString());
         if (currentHealth == 0) Die();
+
+        onHealthChange?.Invoke(currentHealth.ToString());
     }
 
     private void Die()
@@ -44,19 +47,13 @@ public class Healthbehaviour : MonoBehaviour
         
     }
 
-    public IEnumerator ApplyHealthBoost(float duration, float multiplier)
+    public IEnumerator ApplyShieldBoost(float duration, float multiplier)
     {
-        int originalMaxHealth = maxHealth;
-
-        maxHealth = (int)(maxHealth * multiplier);
-        
-        int extraHealth = maxHealth - originalMaxHealth;
-        addHealth(extraHealth);
+        shieldMultiplier = multiplier;
 
         yield return new WaitForSeconds(duration);
 
-        maxHealth = originalMaxHealth;
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        shieldMultiplier = 1f;
     }
 
     public int MaxHealth => maxHealth;

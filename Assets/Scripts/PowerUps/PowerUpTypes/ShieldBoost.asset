@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6649449b4351d60488c05e6cf9c43f08, type: 3}
-  m_Name: SpeedBoost
+  m_Name: ShieldBoost
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpType
-  sprite: {fileID: 21300000, guid: 4b3cde31bdef54c458f0b04071d88cc5, type: 3}
+  sprite: {fileID: -2320517027798944365, guid: e48f1ab16301c9a4d98a3cf31313bbef, type: 3}
   duration: 10
-  multiplier: 1.5
-  color: {r: 0.7490196, g: 0.3254902, b: 0.3254902, a: 1}
-  effect: 1
+  multiplier: 0.5
+  color: {r: 0.4901961, g: 0.87843144, b: 0.44705886, a: 1}
+  effect: 3

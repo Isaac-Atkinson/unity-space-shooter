@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
@@ -11,7 +12,7 @@ public class SpawnController : MonoBehaviour
     public UnityEvent<string> onWaveChange;
 
     [SerializeField] private int swarmsPerRound;
-    [SerializeField] private List<GameObject> enemyPrefabs;
+    [SerializeField] private List<EnemySpawn> enemyspawns;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private Slider waveProgressBar;
 
@@ -54,23 +55,54 @@ public class SpawnController : MonoBehaviour
         {
          
             Transform point = spawnPoints[i];
-            int maxEnemyIndex = Mathf.Min(currentWave - 1, enemyPrefabs.Count - 1);
+
+            float totalSpawnProbability = calculateTotalSpawnProbability();
             
+            float chance = Random.Range(0f, totalSpawnProbability);
 
-            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, maxEnemyIndex + 1)], point.position, point.rotation);
+            foreach (EnemySpawn spawn in enemyspawns)
+            {
 
-            enemy.GetComponent<Healthbehaviour>().onDeath.AddListener((removeEnemy));
-            enemy.GetComponent<Healthbehaviour>().onDeath.AddListener(ScoreManager.instance.addScore);
-            currentEnemies.Add(enemy);
+                if (spawn.unlockWave <= currentWave)
+                {
+                    chance -= spawn.spawnProbability;
+
+                    if (chance < 0)
+                    {
+                        instanitiateEnemy(spawn, point);
+                        break;
+                    }
+                }
+            }
         }
+    }
+
+    private float calculateTotalSpawnProbability()
+    {
+        float totalSpawnProbability = 0f;
+        foreach (EnemySpawn enemySpawn in enemyspawns)
+        {
+            if (enemySpawn.unlockWave <= currentWave)
+            {
+                totalSpawnProbability += enemySpawn.spawnProbability;
+            }
+        }
+        return totalSpawnProbability;
+    }
+
+    private void instanitiateEnemy(EnemySpawn spawn, Transform point)
+    {
+        GameObject enemy = Instantiate(spawn.enemyPrefab, point.position, point.rotation);
+
+        enemy.GetComponent<Healthbehaviour>().onDeath.AddListener(removeEnemy);
+        enemy.GetComponent<Healthbehaviour>().onDeath.AddListener(ScoreManager.instance.addScore);
+        currentEnemies.Add(enemy);
     }
 
     public void removeEnemy(GameObject enemy)
     {
-        Debug.Log("Removing enemy" );
         currentEnemies.Remove(enemy);
         float progress = ((float) currentEnemies.Count / (spawnPoints.Length * swarmsPerRound));
-        Debug.Log("Progress: " + progress);
         waveProgressBar.value = progress;
     }
 

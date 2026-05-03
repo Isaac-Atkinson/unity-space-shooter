@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2031406298659437822, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
+      propertyPath: spawnChance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 649184370812770702, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -56,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 767780ce78b8bdf4ebcb0231280c9655, type: 3}
+    - target: {fileID: 5890146761350416609, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890146761350416609, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2095207727
+      objectReference: {fileID: 0}
     - target: {fileID: 6353512062059346163, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
       propertyPath: m_Name
       value: FastEnemy

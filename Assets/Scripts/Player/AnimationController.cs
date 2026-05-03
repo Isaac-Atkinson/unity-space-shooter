@@ -16,7 +16,7 @@ public class AnimationController : MonoBehaviour
 
     private void AnimateDamageTaken(int damage)
     {
-        float intensity = Mathf.Clamp01(damage / 50f);
+        float intensity = Mathf.Clamp01(damage / 20f);
         Color color = Color.Lerp(Color.white, damageColor, intensity);
         StartCoroutine(DamageAnimation(color));
     }

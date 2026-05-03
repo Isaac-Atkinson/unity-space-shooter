@@ -14,6 +14,6 @@ public class PowerUpType : ScriptableObject
         damageBoost,
         speedBoost,
         scoreBoost,
-        healthBoost,
+        shieldBoost,
     }
 }

@@ -118,8 +118,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1571071055
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 278b61a9028b9194ba3d4eeadb00f4fb, type: 3}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFireBehaviour
   spawn: {fileID: 17220065850515596}
   enemy_projectile: {fileID: 7919974536667465780, guid: 418c1d2ddfc21a94db1e9f676fdee6ee, type: 3}
-  fireTime: 1
+  fireTime: 2
   fireType: 0
 --- !u!58 &8768433450712943479
 CircleCollider2D:
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6353512062059346163}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d4d8e99a5097f7419e4fb918bf7d2f4, type: 3}
   m_Name: 
@@ -299,7 +299,8 @@ MonoBehaviour:
   - {fileID: 6664471971148464462, guid: 7f4fb48338b5cb84fbb15e7c20f44e51, type: 3}
   - {fileID: 6568172477710758926, guid: 2b22f7c16edd74e4baf8355ab94c3c32, type: 3}
   - {fileID: 6419025448129008809, guid: 8f06841c552db174c98aae580de31804, type: 3}
-  dropProbability: 1
+  - {fileID: 2630348138479870437, guid: b529aab72b644d149b06f8e61602591e, type: 3}
+  dropProbability: 0.5
 --- !u!114 &-7014695943007703260
 MonoBehaviour:
   m_ObjectHideFlags: 0

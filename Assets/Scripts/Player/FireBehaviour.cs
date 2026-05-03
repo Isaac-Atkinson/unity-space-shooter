@@ -14,6 +14,8 @@ public class FireBehaviour : MonoBehaviour
     [SerializeField] private Transform spawn;
     [SerializeField] private ProjectileBehaviour fireball_prefab;
     [SerializeField] private GamePauseManager gamePauseManager;
+    [SerializeField] private float timeBetweenShots = 0.5f;
+    private float timeSinceLastShot;
 
     private void Awake()
     {
@@ -26,9 +28,11 @@ public class FireBehaviour : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Attack");
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        timeSinceLastShot += Time.deltaTime;
+
         if (moveAction != null && moveAction.triggered)
         {
             if (gamePauseManager != null && !gamePauseManager.IsPaused())
@@ -41,9 +45,13 @@ public class FireBehaviour : MonoBehaviour
     
     private void Fire()
     {
-        onFire?.Invoke();
-        ProjectileBehaviour projectile = Instantiate(fireball_prefab, spawn.position, tr.rotation);
-        projectile.setDamage(damage);
+        if(timeSinceLastShot >= timeBetweenShots)
+        {
+            onFire?.Invoke();
+            ProjectileBehaviour projectile = Instantiate(fireball_prefab, spawn.position, tr.rotation);
+            projectile.setDamage(damage);
+            timeSinceLastShot = 0f;
+        }
     }
 
     public IEnumerator ApplyDamageBoost(float duration, float multiplier)
