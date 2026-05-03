@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class FireBehaviour : MonoBehaviour
 {
-
+    public UnityEvent onFire;
 
     private InputAction moveAction;
     private Rigidbody2D rb;
@@ -40,6 +41,7 @@ public class FireBehaviour : MonoBehaviour
     
     private void Fire()
     {
+        onFire?.Invoke();
         ProjectileBehaviour projectile = Instantiate(fireball_prefab, spawn.position, tr.rotation);
         projectile.setDamage(damage);
     }

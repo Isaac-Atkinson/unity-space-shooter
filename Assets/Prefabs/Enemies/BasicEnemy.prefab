@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1870067635054586943}
   - component: {fileID: -8064475848854950341}
   - component: {fileID: -7014695943007703260}
+  - component: {fileID: 2920467767386901406}
   m_Layer: 7
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -191,9 +192,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnController, Assembly-CSharp
-        m_MethodName: removeEnemy
+      - m_Target: {fileID: 2920467767386901406}
+        m_TargetAssemblyTypeName: PlayerAudioBehaviour, Assembly-CSharp
+        m_MethodName: onDeath
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -312,3 +313,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationController
   damageColor: {r: 0.9790758, g: 1, b: 0, a: 1}
+--- !u!114 &2920467767386901406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353512062059346163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef3ac34bf5b0504199fd7129fec8034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAudioBehaviour
+  deathSound: {fileID: 8300000, guid: 4c0cd64f2c2e48a44bca67fe62c289f4, type: 3}
+  fireSound: {fileID: 0}
+  damageSound: {fileID: 0}
