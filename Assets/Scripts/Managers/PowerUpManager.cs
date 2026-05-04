@@ -33,6 +33,7 @@ public class PowerUpManager : MonoBehaviour
         Debug.Log("Adding power-up: " + type.name);
         activePowerUp = type;
         powerUpUI.addPowerUp(type);
+        
         StartCoroutine(Timer(type.Duration));
     }
 

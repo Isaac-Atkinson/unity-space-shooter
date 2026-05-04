@@ -7,6 +7,8 @@ public class OnDeathDrop : MonoBehaviour
     [SerializeField] private List<GameObject> dropPrefabs;
     [SerializeField] private float dropProbability;
 
+    
+
     void Start()
     {
         Healthbehaviour healthbehaviour = GetComponent<Healthbehaviour>();
