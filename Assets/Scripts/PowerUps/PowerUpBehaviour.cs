@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PowerUp : MonoBehaviour
+public class PowerUpBehaviour : MonoBehaviour
 {
     [SerializeField] private PowerUpType type;
     [SerializeField] private GameObject pickupEffectPrefab;
@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = type.sprite;
+        GetComponent<SpriteRenderer>().sprite = type.Sprite;
         
     }
 

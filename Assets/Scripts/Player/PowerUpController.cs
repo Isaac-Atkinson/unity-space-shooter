@@ -23,21 +23,21 @@ public class PowerUpController : MonoBehaviour
     {
         onPowerUpActivated?.Invoke(type);
 
-        Color subtleColor = Color.Lerp(Color.white, type.color, 0.5f);
-        StartCoroutine(applyColourTint(subtleColor, type.duration));
-        switch (type.effect)
+        Color subtleColor = Color.Lerp(Color.white, type.Color, 0.5f);
+        StartCoroutine(applyColourTint(subtleColor, type.Duration));
+        switch (type.Effect)
         {
             case PowerUpType.PowerUpEffect.damageBoost:
-                StartCoroutine(fireBehaviour.ApplyDamageBoost(type.duration, type.multiplier));
+                StartCoroutine(fireBehaviour.ApplyDamageBoost(type.Duration, type.Multiplier));
                 break;
             case PowerUpType.PowerUpEffect.shieldBoost:
-                StartCoroutine(healthBehaviour.ApplyShieldBoost(type.duration, type.multiplier));
+                StartCoroutine(healthBehaviour.ApplyShieldBoost(type.Duration, type.Multiplier));
                 break;
             case PowerUpType.PowerUpEffect.scoreBoost:
-                StartCoroutine(ScoreManager.instance.ApplyScoreBoost(type.duration, type.multiplier));
+                StartCoroutine(ScoreManager.instance.ApplyScoreBoost(type.Duration, type.Multiplier));
                 break;
             case PowerUpType.PowerUpEffect.speedBoost:
-                StartCoroutine(playerMovement.ApplySpeedBoost(type.duration, type.multiplier));
+                StartCoroutine(playerMovement.ApplySpeedBoost(type.Duration, type.Multiplier));
                 break;
         }
     }

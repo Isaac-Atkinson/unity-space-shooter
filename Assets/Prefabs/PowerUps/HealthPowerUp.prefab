@@ -50,12 +50,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7061308011702654816, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
       propertyPath: m_Name
-      value: DamagePowerUp Variant 1
+      value: HealthPowerUP
       objectReference: {fileID: 0}
     - target: {fileID: 8309432323727000241, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: 55c54511109dfe64a9e55f6da4130879, type: 2}
+    - target: {fileID: 8309432323727000241, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
+      propertyPath: pickupEffectPrefab
+      value: 
+      objectReference: {fileID: 4417475264206174214, guid: c7ca49c2a92d1684e957b07ec173d0d3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -13,33 +13,42 @@ public class PowerUpUI : MonoBehaviour
     [SerializeField] private GameObject powerUpCollectedPanel;
     
     private float powerUpCollectedDisplayTime = 1f;
+    private PowerUpType activePowerUp = null;
+
+    [SerializeField] private GameObject powerUPIcon;
+    [SerializeField] private TextMeshProUGUI powerUpTimer;
 
 
-
-    private void Awake()
+    
+    public void Start()
     {
+        powerUPIcon.SetActive(false);
         
     }
 
-
-    private IEnumerator Timer(int duration, TextMeshProUGUI timer)
+    private IEnumerator Timer(int duration)
     {
         float timeLeft = duration;
         while (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
-            timer.text = Mathf.Ceil(timeLeft).ToString();
+            powerUpTimer.text = Mathf.Ceil(timeLeft).ToString();
             yield return null;
         }
-        effectPanel.SetActive(false);
+        activePowerUp = null;
+        powerUPIcon.SetActive(false);
+        powerUpTimer.text = "";
     }
-    public void showUI(PowerUpType type)
+    
+    public void addPowerUp(PowerUpType type)
     {
-        GameObject panel = Instantiate(effectPanel, canvas);
-        Image powerUpIcon = panel.GetComponentInChildren<Image>();
-        powerUpIcon.sprite = type.sprite;
-        TextMeshProUGUI timer = panel.GetComponentInChildren<TextMeshProUGUI>();
-        StartCoroutine(Timer(type.duration, timer));
+        Debug.Log("Showing UI for power-up: " + type.name);
+        activePowerUp = type;
+        powerUPIcon.SetActive(true);
+        powerUPIcon.GetComponent<Image>().sprite = type.Sprite;
+        StartCoroutine(Timer(type.Duration));
+        showPowerUpCollectedUI(type);
+
     }
 
     public void showPowerUpCollectedUI(PowerUpType type)
@@ -52,7 +61,7 @@ public class PowerUpUI : MonoBehaviour
     {
         GameObject panel = Instantiate(powerUpCollectedPanel, canvas);
         TextMeshProUGUI text = panel.GetComponentInChildren<TextMeshProUGUI>();
-        text.text = "+ " + type.effect.ToString();
+        text.text = "+ " + type.Effect.ToString();
 
         yield return new WaitForSeconds(powerUpCollectedDisplayTime);
 

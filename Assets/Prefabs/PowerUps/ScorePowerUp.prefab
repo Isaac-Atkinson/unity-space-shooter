@@ -10,12 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2630348138479870437, guid: b529aab72b644d149b06f8e61602591e, type: 3}
       propertyPath: m_Name
-      value: DamagePowerUp Variant 1 Variant Variant
+      value: ScorePowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 3904367058027967540, guid: b529aab72b644d149b06f8e61602591e, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: c0917063c880cc247a322a98ece65a8a, type: 2}
+    - target: {fileID: 3904367058027967540, guid: b529aab72b644d149b06f8e61602591e, type: 3}
+      propertyPath: pickupEffectPrefab
+      value: 
+      objectReference: {fileID: 6512520326943304434, guid: 697c9bb1f245e0c4ba3cbae9776acd3e, type: 3}
     - target: {fileID: 8941975450256829343, guid: b529aab72b644d149b06f8e61602591e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -52,9 +52,13 @@ PrefabInstance:
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: db7503622d1a49b4eb75b3eaaeae6c0c, type: 2}
+    - target: {fileID: 5298784598631637471, guid: 2b22f7c16edd74e4baf8355ab94c3c32, type: 3}
+      propertyPath: pickupEffectPrefab
+      value: 
+      objectReference: {fileID: 1918096658478150991, guid: c545e2c8b02bc0d4c94d22269011a05b, type: 3}
     - target: {fileID: 6568172477710758926, guid: 2b22f7c16edd74e4baf8355ab94c3c32, type: 3}
       propertyPath: m_Name
-      value: DamagePowerUp Variant 1 Variant
+      value: SpeedPowerUp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

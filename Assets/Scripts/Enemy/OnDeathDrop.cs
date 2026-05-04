@@ -22,8 +22,12 @@ public class OnDeathDrop : MonoBehaviour
         float chance = Random.Range(0f, 1f);
         if (chance <= dropProbability && dropPrefabs.Count > 0)
         {
-            int index = Random.Range(0, dropPrefabs.Count);
-            Instantiate(dropPrefabs[index], transform.position, transform.rotation);
+            if (PowerUpManager.instance.canSpawnPowerUp())
+            {
+                int index = Random.Range(0, dropPrefabs.Count);
+                Instantiate(dropPrefabs[index], transform.position, transform.rotation);
+            }
+            
         }
     }
 }
