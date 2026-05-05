@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3030345000760363732}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4759451997595409877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1856, z: 0}
+  m_LocalPosition: {x: 0, y: -0.217, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,10 +46,9 @@ GameObject:
   - component: {fileID: 4542150998651486955}
   - component: {fileID: 8094813621645392431}
   - component: {fileID: 3596352555570010836}
-  - component: {fileID: 1563858140939996138}
-  - component: {fileID: 9130838545457312639}
-  - component: {fileID: 3013235646370495632}
-  m_Layer: 7
+  - component: {fileID: 2184821123319744995}
+  - component: {fileID: 3541532107596788182}
+  m_Layer: 12
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,9 +205,21 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
-  maxHealth: 200
-  explosionPrefab: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 8094813621645392431}
+        m_TargetAssemblyTypeName: AudioBehaviour, Assembly-CSharp
+        m_MethodName: onDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  maxHealth: 100
+  explosionPrefab: {fileID: 5708511428268159734, guid: e8a2a93820c9c2b4da7d901b79482ace, type: 3}
 --- !u!114 &8094813621645392431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +251,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationController
   damageColor: {r: 0.98039216, g: 1, b: 0, a: 1}
---- !u!50 &1563858140939996138
+--- !u!114 &2184821123319744995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084123872862152991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3ff741d26529d4da5cc63685d69fab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossMovementBehaviour
+  speed: 1
+  timeBetweenChangeDirection: 2
+--- !u!50 &3541532107596788182
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -267,28 +292,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &9130838545457312639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7084123872862152991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8fce88c245a8c48aea48f5103c4858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementBehaviour
-  speed: 1
---- !u!114 &3013235646370495632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7084123872862152991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970e43c21b9c4f1498b4d3d4d25daa83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoundaryBehaviour

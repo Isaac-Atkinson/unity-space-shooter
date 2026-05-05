@@ -17,8 +17,8 @@ TagManager:
   - power-ups
   - player
   - wall
-  - 
-  - 
+  - bossCollisionWall
+  - boss
   - 
   - 
   - 
