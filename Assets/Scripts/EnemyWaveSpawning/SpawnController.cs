@@ -16,13 +16,20 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private Slider waveProgressBar;
 
+    [SerializeField] private List<GameObject> bosses;
+    [SerializeField] private Transform bossSpawn;
+
     private SpawnerState currentState = new IdleState();
     private int currentWave = 1;
     
 
     private List<GameObject> currentEnemies = new List<GameObject>();
+    private GameObject activeBoss;
 
-
+    private void Awake()
+    {
+        activeBoss = null;
+    }
     private void Start()
     {
         onWaveChange?.Invoke(currentWave.ToString());
@@ -75,6 +82,22 @@ public class SpawnController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void spawnBoss()
+    {
+        GameObject boss = Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
+        activeBoss = boss;
+    }
+
+    public void onBossDefeated()
+    {
+        activeBoss = null;
+    }
+
+    public bool isBossDefeated()
+    {
+        return activeBoss == null;
     }
 
     private float calculateTotalSpawnProbability()

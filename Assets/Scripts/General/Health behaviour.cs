@@ -50,6 +50,11 @@ public class Healthbehaviour : MonoBehaviour
     public IEnumerator ApplyShieldBoost(float duration, float multiplier)
     {
         shieldMultiplier = multiplier;
+        HealthBarBehaviour healthBar = GetComponentInChildren<HealthBarBehaviour>();
+        if (healthBar != null)
+        {
+            StartCoroutine(healthBar.setShieldHealthBar(duration));
+        }
 
         yield return new WaitForSeconds(duration);
 

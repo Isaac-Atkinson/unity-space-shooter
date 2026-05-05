@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PowerUpManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class PowerUpManager : MonoBehaviour
 
     private PowerUpType activePowerUp;
     private PowerUpUI powerUpUI;
+
+    public UnityEvent onPowerUpExpired;
 
 
     private void Awake()
@@ -42,12 +45,16 @@ public class PowerUpManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         activePowerUp = null;
+        onPowerUpExpired?.Invoke();
+
     }
 
     public bool canSpawnPowerUp()
     {
         return activePowerUp == null;
     }
+
+    
 
     
 }

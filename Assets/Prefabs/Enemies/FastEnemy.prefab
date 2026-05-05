@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: spawnChance
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 258153189000713858, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 649184370812770702, guid: a1566feca51efbf47b3f52a7d78183ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

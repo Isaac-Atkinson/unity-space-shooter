@@ -16,6 +16,7 @@ public class MainMenuBehaviour : MonoBehaviour
     }
     public void startGame()
     {
+        SoundManager.instance.stopMusic();
         SceneManager.LoadScene("MainScene");
     }
 

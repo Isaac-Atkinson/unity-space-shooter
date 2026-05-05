@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyFireBehaviour : MonoBehaviour { 
 
@@ -7,6 +8,8 @@ public class EnemyFireBehaviour : MonoBehaviour {
     [SerializeField] private EnemyProjectile enemy_projectile;
     [SerializeField] private float fireTime = 1.0f;
     [SerializeField] private FireType fireType;
+
+    public UnityEvent onFire;
 
     private enum FireType{
         None,
@@ -53,6 +56,8 @@ public class EnemyFireBehaviour : MonoBehaviour {
     private void fire()
     {
         Instantiate(enemy_projectile, spawn.position, tr.rotation);
+        onFire?.Invoke();
+        Debug.Log("Firing");
     }
 
     private void initialise()

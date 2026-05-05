@@ -222,6 +222,9 @@ MonoBehaviour:
   enemy_projectile: {fileID: 7919974536667465780, guid: 418c1d2ddfc21a94db1e9f676fdee6ee, type: 3}
   fireTime: 2
   fireType: 0
+  onFire:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &8768433450712943479
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -329,3 +332,6 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 4c0cd64f2c2e48a44bca67fe62c289f4, type: 3}
   fireSound: {fileID: 0}
   damageSound: {fileID: 0}
+  powerUpSound: {fileID: 0}
+  hitBoundary: {fileID: 8300000, guid: bc1d084cdec329a49a925f9b1164ccaa, type: 3}
+  powerDownSound: {fileID: 0}

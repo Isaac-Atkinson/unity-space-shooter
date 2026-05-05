@@ -27,7 +27,7 @@ public class SpawningState : SpawnerState
 
         if (spawnController.AllEnemiesGone() && swarmsSpawned >= spawnController.SwarmsPerRound)
         {
-            return new IdleState();
+            return new BossState();
         }
         
         return null;

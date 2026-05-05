@@ -4,11 +4,14 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance { get; private set; }
 
-    private AudioSource sfxSource;
-    private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource musicSource;
+
+    [SerializeField] private AudioClip music;
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -17,11 +20,13 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        playMusic();
     }
 
     void Start()
     {
-        sfxSource = GetComponent<AudioSource>();
+        
     }
 
     public void playSound(AudioClip clip)
@@ -29,5 +34,16 @@ public class SoundManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
-    
+    private void playMusic()
+    {
+        musicSource.clip = music;
+        musicSource.Play();
+    }
+
+    public void stopMusic()
+    {
+        musicSource.Stop();
+    }
+
+
 }
