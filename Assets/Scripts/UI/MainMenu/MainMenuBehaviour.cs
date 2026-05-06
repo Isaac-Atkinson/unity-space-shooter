@@ -16,7 +16,7 @@ public class MainMenuBehaviour : MonoBehaviour
     }
     public void startGame()
     {
-        SoundManager.instance.stopMusic();
+        SoundManager.instance.setMusicVolume(PlayerPrefs.GetFloat("MusicVolume") * 0.7f);
         SceneManager.LoadScene("MainScene");
     }
 
