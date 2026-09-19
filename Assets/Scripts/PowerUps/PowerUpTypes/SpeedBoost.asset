@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6649449b4351d60488c05e6cf9c43f08, type: 3}
   m_Name: SpeedBoost
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpType
-  sprite: {fileID: 3048179449877301847, guid: 42bc1a9795d03c34e8331b20371d4c0c, type: 3}
+  sprite: {fileID: 4605136403636379599, guid: 508d3d72b56064e49a6a3ea11b43d488, type: 3}
   duration: 10
   multiplier: 1.5
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0, g: 0.48062038, b: 1, a: 1}
   effect: 1

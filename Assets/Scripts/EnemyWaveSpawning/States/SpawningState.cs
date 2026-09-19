@@ -36,12 +36,12 @@ public class SpawningState : SpawnerState
     public void Enter(SpawnController spawnController)
     {
         spawnTimer = timeBetweenSwarms;
-        spawnController.enableProgressBar();
+        
     }
 
     public void Exit(SpawnController spawnController)
     {
         spawnController.incrementWaveNumber();
-        spawnController.disableProgressBar();
+        
     }
 }

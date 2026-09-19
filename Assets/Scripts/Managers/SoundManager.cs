@@ -47,6 +47,7 @@ public class SoundManager : MonoBehaviour
     {
         
         musicSource.clip = music;
+        musicSource.loop = true;
         musicSource.Play();
     }
 

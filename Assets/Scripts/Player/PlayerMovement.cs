@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(leftRotate != null)  {
             float left = leftRotate.ReadValue<float>();
@@ -52,33 +52,7 @@ public class PlayerMovement : MonoBehaviour
             //rb.AddTorque(right * rotationSpeed * -1);
             rb.AddForce(tr.right * right * speed);
         }
-        //rb.angularVelocity = Mathf.Clamp(rb.angularVelocity, -maxRotationSpeed, maxRotationSpeed);
-
-
-        //if (thrustAction != null){
-
-        //    float thrust = thrustAction.ReadValue<float>();
-            
-
-        //    rb.AddForce(tr.up * thrust * speed);
-        //    if(rb.linearVelocity.magnitude > maxSpeed)
-        //    {
-        //        rb.linearVelocity = maxSpeed * rb.linearVelocity.normalized;
-        //    }
-        //} 
         
-
-        //if (brakeAction != null)
-        //{
-
-        //    float brake = brakeAction.ReadValue<float>();
-        //    //rb.AddForce(tr.up * brake * speed * -1);
-        //    rb.AddForce(-rb.linearVelocity * brake * brakeForce);
-        //    if (rb.linearVelocity.magnitude > maxSpeed)
-        //    {
-        //        rb.linearVelocity = maxSpeed * rb.linearVelocity.normalized;
-        //    }
-        //}
     }
 
     public IEnumerator ApplySpeedBoost(float duration, float multiplier)

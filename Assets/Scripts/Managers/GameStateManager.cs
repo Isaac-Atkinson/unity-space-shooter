@@ -7,6 +7,14 @@ using UnityEngine.UIElements;
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
+
+    private void Start()
+    {
+        
+        
+        
+        
+    }
     public void Exit()
     {
         SceneManager.LoadScene("MainMenu");

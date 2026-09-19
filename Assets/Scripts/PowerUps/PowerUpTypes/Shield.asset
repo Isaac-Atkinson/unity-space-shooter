@@ -15,5 +15,5 @@ MonoBehaviour:
   sprite: {fileID: -2320517027798944365, guid: e48f1ab16301c9a4d98a3cf31313bbef, type: 3}
   duration: 10
   multiplier: 0.5
-  color: {r: 0.4901961, g: 0.87843144, b: 0.44705886, a: 1}
+  color: {r: 0.1764706, g: 0.7490196, b: 0.8352942, a: 1}
   effect: 3

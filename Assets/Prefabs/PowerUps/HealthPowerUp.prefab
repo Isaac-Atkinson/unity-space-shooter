@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6898967877508397339, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.854902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898967877508397339, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.77647066
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898967877508397339, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.18039216
+      objectReference: {fileID: 0}
     - target: {fileID: 7061308011702654816, guid: 82b051a2fd97be0438310912805cdd5b, type: 3}
       propertyPath: m_Name
       value: HealthPowerUP

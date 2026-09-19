@@ -13,6 +13,10 @@ public class MainMenuBehaviour : MonoBehaviour
         mainPanel.SetActive(true);
         highScoresPanel.SetActive(false);
         optionsPanel.SetActive(false);
+        
+       
+        
+        
     }
     public void startGame()
     {

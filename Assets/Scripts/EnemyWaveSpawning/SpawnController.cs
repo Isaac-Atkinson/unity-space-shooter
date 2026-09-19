@@ -14,7 +14,7 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private int swarmsPerRound;
     [SerializeField] private List<EnemySpawn> enemyspawns;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private Slider waveProgressBar;
+    
 
     [SerializeField] private List<GameObject> bosses;
     [SerializeField] private Transform bossSpawn;
@@ -33,9 +33,9 @@ public class SpawnController : MonoBehaviour
     private void Start()
     {
         onWaveChange?.Invoke(currentWave.ToString());
-        disableProgressBar();
+        
         Color color = new Color(142 /255f, 46 / 255f, 96 / 255f);
-        waveProgressBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = color;
+        
 
     }
     void Update()
@@ -87,6 +87,7 @@ public class SpawnController : MonoBehaviour
     public void spawnBoss()
     {
         GameObject boss = Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
+        boss.GetComponent<Healthbehaviour>().onDeath.AddListener(ScoreManager.instance.addScore);
         activeBoss = boss;
     }
 
@@ -125,8 +126,7 @@ public class SpawnController : MonoBehaviour
     public void removeEnemy(GameObject enemy)
     {
         currentEnemies.Remove(enemy);
-        float progress = ((float) currentEnemies.Count / (spawnPoints.Length * swarmsPerRound));
-        waveProgressBar.value = progress;
+        
     }
 
     public int SwarmsPerRound => swarmsPerRound;
@@ -146,16 +146,5 @@ public class SpawnController : MonoBehaviour
         
     }
 
-    public void enableProgressBar()
-    {
-        waveProgressBar.value = 1f;
-        waveProgressBar.enabled = true;
-        waveProgressBar.gameObject.SetActive(true);
-    }
-
-    public void disableProgressBar()
-    {
-        waveProgressBar.enabled = false;
-        waveProgressBar.gameObject.SetActive(false);
-    }
+    
 }

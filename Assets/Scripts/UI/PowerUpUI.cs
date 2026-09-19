@@ -12,7 +12,7 @@ public class PowerUpUI : MonoBehaviour
     [SerializeField] private Transform canvas;
     [SerializeField] private GameObject powerUpCollectedPanel;
     
-    private float powerUpCollectedDisplayTime = 1f;
+    private float powerUpCollectedDisplayTime = 2.5f;
     private PowerUpType activePowerUp = null;
 
     [SerializeField] private GameObject powerUPIcon;
@@ -46,6 +46,7 @@ public class PowerUpUI : MonoBehaviour
         activePowerUp = type;
         powerUPIcon.SetActive(true);
         powerUPIcon.GetComponent<Image>().sprite = type.Sprite;
+        Debug.Log("Sprite: " + type.Sprite.name);
         StartCoroutine(Timer(type.Duration));
         showPowerUpCollectedUI(type);
 
