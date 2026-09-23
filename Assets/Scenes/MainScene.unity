@@ -4731,7 +4731,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 310.29944, y: 218.19122}
+  m_SizeDelta: {x: 292.9207, y: 203.295}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1813781655
 MonoBehaviour:
@@ -5163,37 +5163,6 @@ MonoBehaviour:
   powerUpSound: {fileID: 0}
   hitBoundary: {fileID: 0}
   powerDownSound: {fileID: 8300000, guid: bc669fc825995cb4e828e6ef824b32eb, type: 3}
---- !u!1 &2143676435
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2143676437}
-  m_Layer: 0
-  m_Name: PowerUpUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2143676437
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143676435}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204.74359, y: 711.3582, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145632406
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,7 +5478,6 @@ SceneRoots:
   - {fileID: 2145814192}
   - {fileID: 1593791283}
   - {fileID: 42046919}
-  - {fileID: 2143676437}
   - {fileID: 528952198}
   - {fileID: 424837762}
   - {fileID: 9944321}

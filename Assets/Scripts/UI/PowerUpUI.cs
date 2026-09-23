@@ -48,7 +48,7 @@ public class PowerUpUI : MonoBehaviour
         powerUPIcon.GetComponent<Image>().sprite = type.Sprite;
         Debug.Log("Sprite: " + type.Sprite.name);
         StartCoroutine(Timer(type.Duration));
-        showPowerUpCollectedUI(type);
+        //showPowerUpCollectedUI(type);
 
     }
 
